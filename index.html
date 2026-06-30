@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Epostal 411 | Mobile Notary & Apostille Services — Riverside & San Bernardino County</title>
+<meta name="description" content="Epostal 411 provides certified mobile notary public and apostille services throughout Riverside and San Bernardino County. Wills, Trusts, Power of Attorney, loan signings, and document authentication — we come to you.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Source+Serif+4:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5EFE3;
+    --cream-dark: #ECE3D2;
+    --paper: #FBF8F1;
+    --seal: #7A1F2B;
+    --seal-dark: #5C1620;
+    --seal-light: #9B3142;
+    --ink: #2B2420;
+    --ink-soft: #5A4F44;
+    --gold-leaf: #B8924A;
+    --line: #D8CBB0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--ink); line-height: 1.65; }
+
+  /* texture overlay */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image: radial-gradient(circle at 1px 1px, rgba(43,36,32,0.035) 1px, transparent 0);
+    background-size: 22px 22px;
+    opacity: 0.6;
+  }
+
+  h1, h2, h3 { font-family: 'Fraunces', serif; color: var(--ink); }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.4rem 4rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(245,239,227,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; }
+  .seal-mark {
+    width: 38px; height: 38px; border-radius: 50%;
+    border: 1.5px solid var(--seal);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif; font-weight: 600; font-size: 0.95rem; color: var(--seal);
+    position: relative;
+  }
+  .seal-mark::after {
+    content: ''; position: absolute; inset: 4px;
+    border: 1px solid var(--seal); border-radius: 50%; opacity: 0.5;
+  }
+  .nav-name { font-family: 'Fraunces', serif; font-size: 1.25rem; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+  .nav-name em { font-style: italic; color: var(--seal); font-weight: 500; }
+  .nav-links { display: flex; gap: 2.25rem; list-style: none; align-items: center; }
+  .nav-links a { color: var(--ink-soft); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.3s; }
+  .nav-links a:hover { color: var(--seal); }
+  .nav-cta {
+    background: var(--seal); color: var(--paper) !important;
+    padding: 0.65rem 1.4rem; border-radius: 3px;
+    font-weight: 600 !important; transition: background 0.3s !important;
+  }
+  .nav-cta:hover { background: var(--seal-dark); color: var(--paper) !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+  .hamburger span { width: 22px; height: 2px; background: var(--ink); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative; z-index: 1;
+    padding: 9rem 4rem 5rem;
+    max-width: 1300px; margin: 0 auto;
+    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: center;
+  }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--seal); font-weight: 600; margin-bottom: 1.5rem;
+  }
+  .eyebrow::before { content: '✦'; font-size: 0.7rem; }
+  .hero h1 {
+    font-size: clamp(2.8rem, 5vw, 4.4rem);
+    font-weight: 500; line-height: 1.05; letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--seal); font-weight: 400; }
+  .hero-desc {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.15rem; color: var(--ink-soft); line-height: 1.7;
+    max-width: 480px; margin-bottom: 2.25rem;
+  }
+  .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+  .btn-primary {
+    background: var(--seal); color: var(--paper);
+    padding: 0.95rem 2.2rem; border: none; border-radius: 3px;
+    font-family: 'Inter', sans-serif; font-size: 0.88rem; font-weight: 600;
+    cursor: pointer; text-decoration: none; display: inline-block;
+    transition: all 0.3s; letter-spacing: 0.01em;
+  }
+  .btn-primary:hover { background: var(--seal-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(122,31,43,0.25); }
+  .btn-secondary {
+    background: transparent; color: var(--ink); padding: 0.95rem 2.2rem;
+    border: 1.5px solid var(--ink); border-radius: 3px;
+    font-family: 'Inter', sans-serif; font-size: 0.88rem; font-weight: 600;
+    cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.3s;
+  }
+  .btn-secondary:hover { border-color: var(--seal); color: var(--seal); }
+
+  .hero-meta { display: flex; gap: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+  .meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+  .meta-num { font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 600; color: var(--seal); }
+  .meta-label { font-size: 0.72rem; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* ── HERO SEAL VISUAL ── */
+  .hero-visual { display: flex; justify-content: center; align-items: center; position: relative; }
+  .seal-large {
+    width: 340px; height: 340px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, var(--seal-light), var(--seal) 60%, var(--seal-dark));
+    display: flex; align-items: center; justify-content: center;
+    position: relative; box-shadow: 0 30px 60px -10px rgba(122,31,43,0.35), inset 0 2px 12px rgba(255,255,255,0.15);
+    animation: gentle-rotate 40s linear infinite;
+  }
+  @keyframes gentle-rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .seal-ring {
+    position: absolute; inset: 14px; border-radius: 50%;
+    border: 2px dashed rgba(245,239,227,0.4);
+  }
+  .seal-inner {
+    width: 250px; height: 250px; border-radius: 50%;
+    border: 1.5px solid rgba(245,239,227,0.55);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; animation: counter-rotate 40s linear infinite;
+  }
+  @keyframes counter-rotate { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
+  .seal-inner-text {
+    font-family: 'Fraunces', serif; color: var(--cream); 
+  }
+  .seal-inner-text .big { font-size: 1.5rem; font-weight: 600; letter-spacing: 0.02em; line-height: 1.2; }
+  .seal-inner-text .small { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; margin-top: 0.5rem; opacity: 0.85; }
+  .seal-stamp-badge {
+    position: absolute; bottom: -10px; right: 10px;
+    background: var(--paper); border: 2px solid var(--seal);
+    color: var(--seal); font-family: 'Inter', sans-serif; font-weight: 700;
+    font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.5rem 1rem; border-radius: 30px; transform: rotate(-6deg);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  }
+
+  /* ── SECTION SHARED ── */
+  section { position: relative; z-index: 1; padding: 6rem 4rem; max-width: 1300px; margin: 0 auto; }
+  .section-full { max-width: 100%; padding: 6rem 0; position: relative; z-index: 1; }
+  .section-inner { max-width: 1300px; margin: 0 auto; padding: 0 4rem; }
+  .divider { width: 100%; height: 1px; background: var(--line); position: relative; z-index: 1; }
+  .section-eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--seal);
+    font-weight: 600; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem;
+  }
+  .section-eyebrow::before { content: '✦'; font-size: 0.7rem; }
+  .section-title { font-size: clamp(2.1rem, 4vw, 3rem); font-weight: 500; line-height: 1.1; margin-bottom: 1.1rem; }
+  .section-title em { font-style: italic; color: var(--seal); font-weight: 400; }
+  .section-desc { font-family: 'Source Serif 4', serif; font-size: 1.05rem; color: var(--ink-soft); max-width: 600px; line-height: 1.7; }
+
+  /* ── SERVICES ── */
+  .services-band { background: var(--ink); color: var(--cream); }
+  .services-band .section-eyebrow { color: var(--gold-leaf); }
+  .services-band .section-title { color: var(--cream); }
+  .services-band .section-title em { color: var(--gold-leaf); }
+  .services-band .section-desc { color: rgba(245,239,227,0.65); }
+
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    margin-top: 3.5rem; background: rgba(245,239,227,0.1);
+    border: 1px solid rgba(245,239,227,0.12);
+  }
+  .service-card { background: var(--ink); padding: 2.5rem 2rem; transition: background 0.4s; }
+  .service-card:hover { background: #352d27; }
+  .service-icon { font-size: 1.8rem; margin-bottom: 1.25rem; display: block; }
+  .service-card h3 { color: var(--cream); font-size: 1.3rem; font-weight: 500; margin-bottom: 0.75rem; }
+  .service-card p { font-size: 0.88rem; color: rgba(245,239,227,0.6); line-height: 1.65; }
+
+  /* ── PROCESS ── */
+  .process-list { margin-top: 3.5rem; display: flex; flex-direction: column; }
+  .process-row {
+    display: grid; grid-template-columns: 100px 1fr; gap: 2.5rem;
+    padding: 2rem 0; border-bottom: 1px solid var(--line); align-items: start;
+  }
+  .process-row:first-child { border-top: 1px solid var(--line); }
+  .process-mark { font-family: 'Fraunces', serif; font-size: 1rem; color: var(--seal); font-weight: 600; padding-top: 0.2rem; }
+  .process-content h3 { font-size: 1.4rem; font-weight: 500; margin-bottom: 0.5rem; }
+  .process-content p { font-family: 'Source Serif 4', serif; color: var(--ink-soft); font-size: 0.98rem; max-width: 600px; }
+
+  /* ── AREA MAP STRIP ── */
+  .area-strip {
+    background: var(--cream-dark); border: 1px solid var(--line);
+    border-radius: 4px; padding: 2.5rem; margin-top: 3rem;
+    display: grid; grid-template-columns: auto 1fr; gap: 2rem; align-items: center;
+  }
+  .area-icon { font-size: 2.5rem; }
+  .area-strip h4 { font-size: 1.15rem; margin-bottom: 0.4rem; color: var(--seal); }
+  .area-strip p { font-size: 0.9rem; color: var(--ink-soft); }
+
+  /* ── PRICING ── */
+  .pricing-band { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
+  .price-card {
+    background: var(--cream); border: 1px solid var(--line); border-radius: 4px;
+    padding: 2.25rem; transition: all 0.3s;
+  }
+  .price-card:hover { border-color: var(--seal); transform: translateY(-3px); }
+  .price-card h3 { font-size: 1.2rem; color: var(--seal); margin-bottom: 0.5rem; font-weight: 500; }
+  .price-amount { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 600; margin: 0.75rem 0 0.25rem; }
+  .price-note { font-size: 0.8rem; color: var(--ink-soft); margin-bottom: 1.25rem; }
+  .price-features { list-style: none; }
+  .price-features li {
+    font-size: 0.85rem; color: var(--ink-soft); padding: 0.4rem 0;
+    border-top: 1px solid var(--line); display: flex; gap: 0.5rem;
+  }
+  .price-features li::before { content: '◆'; color: var(--seal); font-size: 0.6rem; margin-top: 0.25rem; }
+
+  /* ── ABOUT ── */
+  .about-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 5rem; align-items: center; }
+  .about-seal-frame {
+    aspect-ratio: 1; border: 1px solid var(--line); border-radius: 4px;
+    background: var(--cream-dark);
+    display: flex; align-items: center; justify-content: center; position: relative;
+  }
+  .about-seal-frame::before {
+    content: ''; position: absolute; inset: 18px; border: 1px dashed var(--seal); border-radius: 2px; opacity: 0.3;
+  }
+  .about-seal-content { text-align: center; padding: 2rem; }
+  .about-seal-content .stamp { width: 110px; height: 110px; margin: 0 auto 1.5rem; border-radius: 50%; border: 2.5px solid var(--seal); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-weight: 600; color: var(--seal); font-size: 1.8rem; }
+  .about-seal-content p { font-family: 'Source Serif 4', serif; font-style: italic; color: var(--ink-soft); font-size: 0.95rem; }
+  .about-content h2 { font-size: 2.4rem; margin-bottom: 1.25rem; }
+  .about-content p { margin-bottom: 1.1rem; font-size: 0.98rem; color: var(--ink-soft); font-family: 'Source Serif 4', serif; line-height: 1.75; }
+  .credential-list { list-style: none; margin-top: 1.75rem; }
+  .credential-list li { display: flex; gap: 0.75rem; padding: 0.55rem 0; font-size: 0.9rem; color: var(--ink); border-top: 1px solid var(--line); }
+  .credential-list li::before { content: '✓'; color: var(--seal); font-weight: 700; }
+
+  /* ── CTA BAND ── */
+  .cta-band { background: var(--seal); padding: 4.5rem 4rem; text-align: center; }
+  .cta-band h2 { color: var(--cream); font-size: clamp(1.8rem, 3.5vw, 2.6rem); margin-bottom: 0.75rem; }
+  .cta-band p { font-family: 'Source Serif 4', serif; color: rgba(245,239,227,0.8); margin-bottom: 2rem; font-size: 1.05rem; }
+  .btn-cream { background: var(--cream); color: var(--seal); padding: 1rem 2.6rem; border: none; border-radius: 3px; font-weight: 700; font-size: 0.88rem; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.3s; }
+  .btn-cream:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+
+  /* ── CONTACT ── */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .contact-card { background: var(--paper); border: 1px solid var(--line); border-radius: 4px; padding: 1.75rem; display: flex; gap: 1.25rem; align-items: flex-start; margin-bottom: 1.25rem; }
+  .contact-card-icon { width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid var(--seal); color: var(--seal); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.1rem; }
+  .contact-card-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--seal); margin-bottom: 0.3rem; font-weight: 600; }
+  .contact-card-value { font-size: 0.98rem; color: var(--ink); }
+  .contact-form { background: var(--paper); border: 1px solid var(--line); border-radius: 4px; padding: 2.25rem; }
+  .form-group { margin-bottom: 1.1rem; }
+  .form-label { display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-soft); margin-bottom: 0.4rem; font-weight: 600; }
+  .form-input, .form-select, .form-textarea {
+    width: 100%; background: var(--cream); border: 1px solid var(--line); border-radius: 3px;
+    color: var(--ink); font-family: 'Inter', sans-serif; font-size: 0.9rem;
+    padding: 0.8rem 1rem; outline: none; transition: border-color 0.3s;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--seal); }
+  .form-textarea { resize: vertical; min-height: 100px; }
+  .form-submit {
+    width: 100%; background: var(--seal); color: var(--paper); padding: 0.95rem;
+    border: none; border-radius: 3px; font-size: 0.85rem; font-weight: 700;
+    letter-spacing: 0.04em; cursor: pointer; transition: all 0.3s; margin-top: 0.5rem;
+  }
+  .form-submit:hover { background: var(--seal-dark); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--line); padding: 2.5rem 4rem;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    position: relative; z-index: 1;
+  }
+  .footer-logo { display: flex; align-items: center; gap: 0.6rem; font-family: 'Fraunces', serif; font-size: 1.05rem; }
+  .footer-logo em { color: var(--seal); font-style: italic; }
+  .footer-links { display: flex; gap: 1.75rem; list-style: none; }
+  .footer-links a { color: var(--ink-soft); text-decoration: none; font-size: 0.82rem; }
+  .footer-links a:hover { color: var(--seal); }
+  .footer-copy { font-size: 0.75rem; color: var(--ink-soft); opacity: 0.7; }
+
+  @media (max-width: 900px) {
+    nav { padding: 1.1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; gap: 2.5rem; }
+    .hero-visual { order: -1; }
+    .seal-large { width: 240px; height: 240px; }
+    .seal-inner { width: 175px; height: 175px; }
+    section { padding: 4rem 1.5rem; }
+    .section-full { padding: 4rem 0; }
+    .section-inner { padding: 0 1.5rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .process-row { grid-template-columns: 1fr; gap: 0.5rem; }
+    footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
+    .area-strip { grid-template-columns: 1fr; text-align: center; }
+    .hero-meta { gap: 1.5rem; flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#home" class="nav-logo">
+    <div class="seal-mark">E</div>
+    <span class="nav-name">Epostal <em>411</em></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">How It Works</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact" class="nav-cta">Book a Notary</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div>
+    <div class="eyebrow">Certified Mobile Notary &amp; Apostille</div>
+    <h1>We Bring the<br><em>Seal</em> to You</h1>
+    <p class="hero-desc">Epostal 411 provides certified mobile notary public and apostille services throughout Riverside and San Bernardino County. Wills, trusts, power of attorney, loan signings, and document authentication — wherever you are.</p>
+    <div class="hero-buttons">
+      <a href="#contact" class="btn-primary">Book a Notary Now</a>
+      <a href="#services" class="btn-secondary">View Services</a>
+    </div>
+    <div class="hero-meta">
+      <div class="meta-item"><div class="meta-num">2</div><div class="meta-label">Counties Served</div></div>
+      <div class="meta-item"><div class="meta-num">7</div><div class="meta-label">Days a Week</div></div>
+      <div class="meta-item"><div class="meta-num">We</div><div class="meta-label">Come to You</div></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="seal-large">
+      <div class="seal-ring"></div>
+      <div class="seal-inner">
+        <div class="seal-inner-text">
+          <div class="big">Epostal<br>411</div>
+          <div class="small">Notary &amp; Apostille</div>
+        </div>
+      </div>
+      <div class="seal-stamp-badge">Notarized ✓</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SERVICES -->
+<div class="services-band section-full" id="services">
+  <div class="section-inner">
+    <div class="section-eyebrow">What We Notarize</div>
+    <h2 class="section-title">Documents Handled<br>With <em>Precision</em></h2>
+    <p class="section-desc">From estate planning to international document authentication, every signature is witnessed correctly and every seal is placed with care.</p>
+  </div>
+  <div class="services-grid section-inner" style="max-width:1300px;">
+    <div class="service-card">
+      <span class="service-icon">📜</span>
+      <h3>Wills &amp; Trusts</h3>
+      <p>Proper notarization of last wills, living trusts, and estate planning documents to ensure they hold up when it matters most.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">✒️</span>
+      <h3>Power of Attorney</h3>
+      <p>Financial, medical, and general power of attorney documents notarized correctly so your designated agent can act without delay.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🏠</span>
+      <h3>Loan Signings &amp; Real Estate</h3>
+      <p>Refinances, purchase agreements, and closing documents — handled with the accuracy lenders and title companies require.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🌐</span>
+      <h3>Apostille Services</h3>
+      <p>Authentication of documents for use abroad — birth certificates, diplomas, and corporate documents prepared for the California Secretary of State.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🏥</span>
+      <h3>Hospital &amp; Care Facility Visits</h3>
+      <p>We travel to hospitals, nursing homes, and care facilities for signers who cannot leave their bedside.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">📋</span>
+      <h3>General Notarization</h3>
+      <p>Affidavits, contracts, vehicle title transfers, and any other document requiring a certified notary signature.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-eyebrow">How It Works</div>
+  <h2 class="section-title">Simple From<br><em>Call to Signature</em></h2>
+
+  <div class="process-list">
+    <div class="process-row">
+      <div class="process-mark">I.</div>
+      <div class="process-content">
+        <h3>Call or Book Online</h3>
+        <p>Tell us what document needs notarizing and where you'd like to meet — your home, office, or a hospital room.</p>
+      </div>
+    </div>
+    <div class="process-row">
+      <div class="process-mark">II.</div>
+      <div class="process-content">
+        <h3>We Confirm Your Appointment</h3>
+        <p>We schedule a time that works for you, often same-day, throughout Riverside and San Bernardino County.</p>
+      </div>
+    </div>
+    <div class="process-row">
+      <div class="process-mark">III.</div>
+      <div class="process-content">
+        <h3>We Travel to You</h3>
+        <p>Our certified notary arrives at your location with everything needed to witness and notarize your documents on the spot.</p>
+      </div>
+    </div>
+    <div class="process-row">
+      <div class="process-mark">IV.</div>
+      <div class="process-content">
+        <h3>Documents Sealed &amp; Complete</h3>
+        <p>Your signatures are witnessed, the seal is applied, and your documents are ready to file, submit, or send — the same day.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="area-strip">
+    <div class="area-icon">📍</div>
+    <div>
+      <h4>Proudly Serving Riverside &amp; San Bernardino County</h4>
+      <p>From Corona to Riverside, San Bernardino to Rancho Cucamonga — if you're in the Inland Empire, we can come to you.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRICING -->
+<div class="pricing-band section-full" id="pricing">
+  <div class="section-inner">
+    <div class="section-eyebrow">Investment</div>
+    <h2 class="section-title">Straightforward<br><em>Pricing</em></h2>
+    <p class="section-desc">Mobile notary fees are set in part by California state law, plus a travel fee based on your location within Riverside or San Bernardino County.</p>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>Single Signature</h3>
+        <div class="price-amount">Call for Rate</div>
+        <div class="price-note">Per notarized signature, plus travel</div>
+        <ul class="price-features">
+          <li>Acknowledgments &amp; jurats</li>
+          <li>General affidavits</li>
+          <li>Vehicle title transfers</li>
+          <li>Travel within service area included</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <h3>Loan Signing Package</h3>
+        <div class="price-amount">Call for Rate</div>
+        <div class="price-note">Full document set, flat fee</div>
+        <ul class="price-features">
+          <li>Full refinance or purchase package</li>
+          <li>Coordination with title/escrow</li>
+          <li>Evening &amp; weekend availability</li>
+          <li>Same-day scheduling when possible</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <h3>Apostille &amp; Authentication</h3>
+        <div class="price-amount">Call for Rate</div>
+        <div class="price-note">Notarization + state filing assistance</div>
+        <ul class="price-features">
+          <li>Document notarization</li>
+          <li>Secretary of State submission guidance</li>
+          <li>Birth certificates, diplomas, corporate docs</li>
+          <li>For use outside the United States</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-seal-frame">
+      <div class="about-seal-content">
+        <div class="stamp">E</div>
+        <p>"A notary's word is only as good as the seal behind it."</p>
+      </div>
+    </div>
+    <div class="about-content">
+      <div class="section-eyebrow">About Epostal 411</div>
+      <h2>Certified, Local, <em>Dependable</em></h2>
+      <p>Epostal 411 is a certified mobile notary and apostille service built for the Inland Empire. We understand that the documents you need notarized — wills, deeds, power of attorney — carry real weight in your life. That's why we treat every signature with the care and attention it deserves.</p>
+      <p>Rather than asking you to take time off work or sit in a waiting room, we bring the notary seal directly to your home, office, or hospital bedside, anywhere in Riverside or San Bernardino County.</p>
+      <ul class="credential-list">
+        <li>Commissioned Notary Public — State of California</li>
+        <li>Bonded &amp; Insured</li>
+        <li>Background Screened</li>
+        <li>Loan Signing Experience</li>
+        <li>Apostille &amp; Authentication Knowledge</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band">
+  <h2>Need a Document Notarized Today?</h2>
+  <p>Call now or send your request below — we'll confirm your appointment the same day.</p>
+  <a href="tel:9512201631" class="btn-cream">Call (951) 220-1631</a>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-eyebrow">Get In Touch</div>
+  <h2 class="section-title">Schedule Your<br><em>Notary Visit</em></h2>
+  <p class="section-desc" style="margin-bottom:3rem;">Reach out directly or send your details below — we respond quickly, every day of the week.</p>
+
+  <div class="contact-grid">
+    <div>
+      <div class="contact-card">
+        <div class="contact-card-icon">📞</div>
+        <div>
+          <div class="contact-card-label">Primary Phone</div>
+          <div class="contact-card-value">(951) 220-1631</div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-icon">📱</div>
+        <div>
+          <div class="contact-card-label">Secondary Phone</div>
+          <div class="contact-card-value">(714) 330-6564</div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-icon">✉️</div>
+        <div>
+          <div class="contact-card-label">Email</div>
+          <div class="contact-card-value">inotaryre@gmail.com</div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-icon">📍</div>
+        <div>
+          <div class="contact-card-label">Service Area</div>
+          <div class="contact-card-value">Riverside &amp; San Bernardino County</div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-icon">🕒</div>
+        <div>
+          <div class="contact-card-label">Availability</div>
+          <div class="contact-card-value">7 Days a Week — Evenings Available</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <form onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <label class="form-label">Your Name *</label>
+          <input type="text" class="form-input" placeholder="Jane Doe" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone Number *</label>
+          <input type="tel" class="form-input" placeholder="(951) 555-0000" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" class="form-input" placeholder="jane@email.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Service Needed</label>
+          <select class="form-select">
+            <option value="">Select a service...</option>
+            <option>Will or Trust Notarization</option>
+            <option>Power of Attorney</option>
+            <option>Loan Signing / Real Estate</option>
+            <option>Apostille / Authentication</option>
+            <option>Hospital or Care Facility Visit</option>
+            <option>Other Notarization</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Preferred Date &amp; Location</label>
+          <textarea class="form-textarea" placeholder="When and where would you like to meet?"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Request Appointment →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Epostal <em>411</em></div>
+  <ul class="footer-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Epostal 411 · Riverside &amp; San Bernardino County, CA</div>
+</footer>
+
+<script>
+function toggleMenu() {
+  const links = document.querySelector('.nav-links');
+  if (links.style.display === 'flex') { links.style.display = 'none'; }
+  else {
+    links.style.display = 'flex'; links.style.flexDirection = 'column';
+    links.style.position = 'absolute'; links.style.top = '100%'; links.style.left = '0'; links.style.right = '0';
+    links.style.background = 'rgba(245,239,227,0.98)'; links.style.padding = '1.5rem 2rem'; links.style.gap = '1rem';
+    links.style.borderBottom = '1px solid var(--line)';
+  }
+}
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-submit');
+  btn.textContent = '✓ Request Sent — We\'ll Call You Shortly';
+  btn.style.background = '#3D6B4F';
+  setTimeout(() => { btn.textContent = 'Request Appointment →'; btn.style.background = ''; e.target.reset(); }, 4000);
+}
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 150) current = s.id; });
+  navLinks.forEach(l => { l.style.color = ''; if (l.getAttribute('href') === '#' + current) l.style.color = 'var(--seal)'; });
+});
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.service-card, .price-card, .contact-card, .process-row').forEach(el => {
+  el.style.opacity = '0'; el.style.transform = 'translateY(16px)'; el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
